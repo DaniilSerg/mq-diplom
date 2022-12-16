@@ -1,0 +1,1268 @@
+/* Убираем лишнее, добавляем нужное */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: OpenSans-Regular;
+    src: local(OpenSans-Regular),
+    url("../fonts/OpenSans-Regular.woff")
+    format("woff");
+}
+
+@font-face {
+    font-family: OpenSans-Bold;
+    src: local(OpenSans-Bold),
+    url("../fonts/OpenSans-Bold.woff")
+    format("woff");
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+ul {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+/* попап */
+.popup {
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: rgba(0, 0, 0, 0.75);
+    overflow-y: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    display: none;
+    color: #0f0d0e;
+    font-size: 14px;
+    font-family: OpenSans-Regular, sans-serif;
+}
+
+.placeholder-label {
+    color: #9099a3;
+    font-size: 14px;
+    font-family: OpenSans-Regular, sans-serif;
+}
+
+.popup-container {
+    width: 400px;
+    margin: auto;
+    background-color: #ffffff;
+    position: relative;
+    z-index: 2;
+}
+
+.popup-body {
+    margin: 40px 30px ;
+}
+
+.popup-body-title {
+    text-align: center;
+    color: #0f0d0e;
+    font-size: 20px;
+    font-family: OpenSans-Bold, sans-serif;
+    text-transform: uppercase;
+}
+
+.popup-body-title:after {
+    display: block;
+    margin-top: 14px;
+    margin-bottom: 23px;
+    content: "";
+    margin-left: auto;
+    margin-right: auto;
+    width: 67px;
+    height: 3px;
+    background-color: #e1d9bd;
+}
+
+.popup-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.popup-label {
+    margin-bottom: 20px;
+}
+
+.select {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+
+    padding-left: 10px;
+    padding-right: 25px;
+
+    border: none;
+    background-color: unset;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    background-image: url(../svg/form-arrows.svg);
+    background-size: 14px;
+    background-repeat: no-repeat;
+    background-position: center right 5px;
+}
+
+.select:focus-visible {
+    outline: none;
+}
+
+.checkbox {
+    display:none;
+}
+
+.checkbox-text:nth-of-type(2) {
+    margin-left: 20px;
+}
+
+.checkbox-text::before {
+    content: "";
+    margin-right: 8px;
+    display: inline-block;
+    vertical-align: middle;
+    height: 20px;
+    width: 20px;
+    background-image: url(../svg/form-empty-circle.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 20px;
+}
+
+.checkbox:checked + .checkbox-text::before {
+    background-image: url(../svg/form-circle.svg);
+}
+
+.popup-button-submit {
+    outline: none;
+    border: none;
+    margin: 0;
+    height: 48px;
+    width: 100%;
+    background-color: #b59f5b;
+}
+
+.popup-button-submit:hover {
+    background-color: #323232;
+}
+
+.popup-button-text {
+    color: #ffffff;
+    font-size: 14px;
+    font-family: OpenSans-Bold, sans-serif;
+    text-transform: uppercase;
+}
+
+.textarea {
+    border: none;
+    padding-left: 10px;
+    padding-top: 10px;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100px;
+    max-height: 100px;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    resize: none;
+}
+
+.textarea:focus-visible {
+    outline: none;
+}
+
+.popup-close {
+    width: 1.4em;
+    height: 1em;
+    font-size: 20px;
+    position: absolute;
+    top: -1.5em;
+    right: 0;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    text-indent: -9999px;
+    cursor: pointer;
+    background-image: url(../svg/form-x.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+}
+
+/* Шапка. Вроде норм. */
+.header {
+    padding-top: 28px;
+    padding-bottom: 28px;
+    background-image: url("../images/banner-bg.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-color: #666666;
+    position: relative;
+    z-index: 0;
+}
+
+.header:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000000;
+    opacity: 0.45;
+    z-index: -1;
+}
+
+.container {
+    padding: 0 15px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.header-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.header-logo {
+    width: 180px;
+}
+
+.menu-button {
+    display: none;
+}
+
+.menu-button {
+    width: 1.4em;
+    height: 1em;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    font-size: 20px;
+    position: relative;
+    text-indent: -9999px;
+    cursor: pointer;
+}
+
+.menu-button:before, .menu-button:after {
+    content:"";
+    width: 100%;
+    height: 20%;
+
+    border-radius: 5px;
+    background-color: #ffffff;
+
+    position: absolute;
+    left: 0;
+}
+
+.menu-button:before {
+    top: 0;
+}
+
+.menu-button:after {
+    bottom: 0;
+}
+
+.menu-button-label {
+    width: 100%;
+    height: 20%;
+    margin-top: -0.1em;
+
+    border-radius: 5px;
+    background-color: #ffffff;
+
+    position: absolute;
+    left: 0;
+    top: 50%;
+}
+
+.menu-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.menu-list-item {
+    padding-top: 17px;
+    font-size: 13px;
+    font-family: OpenSans-Regular, sans-serif;
+    text-transform: uppercase;
+}
+
+.menu-list-item:nth-child(n + 2) {
+    margin-left: 35px;
+}
+
+.menu-link {
+    color: #ffffff;
+}
+
+.welcome-title {
+    text-align: center;
+    overflow: hidden;
+    margin: 117px 0;
+    color: #ffffff;
+    font-size: 45px;
+    line-heigh: 1.6;
+    font-family: OpenSans-Bold, sans-serif;
+    text-transform: uppercase;
+}
+
+/* Основная часть, ТРЕНДЫ что? */
+.trends {
+    margin-top: 64px;
+}
+
+.partition-name {
+    text-align: center;
+    color: #0f0d0e;
+    font-size: 20px;
+    font-family: OpenSans-Bold, sans-serif;
+    text-transform: uppercase;
+}
+
+.partition-name:after {
+    display: block;
+    margin-top: 14px;
+    margin-bottom: 23px;
+    content: "";
+    margin-left: auto;
+    margin-right: auto;
+    width: 67px;
+    height: 3px;
+    background-color: #e1d9bd;
+}
+
+.trends-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.trend {
+    width: calc(25% - 2px);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-color: #666666;
+    position: relative;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.trend:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000000;
+    opacity: 0.45;
+    z-index: -1;
+}
+
+.trend-garden {
+    background-image: url("../images/trend1.jpg");
+}
+
+.trend-cheese {
+    background-image: url("../images/trend2.jpg");
+}
+
+.trend-mountains {
+    background-image: url("../images/trend3.jpg");
+}
+
+.trend-vitamins {
+    background-image: url("../images/trend4.jpg");
+}
+
+.trend-content {
+    margin: 16px 20px;
+    width: 100%;
+    border: 3px solid #b59f5b;
+    padding: 38px 35px;
+}
+
+.trend-tags-list {
+    margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.trend-tags-item {
+    font-size: 14px;
+    font-family: OpenSans-Bold, sans-serif;
+    text-transform: uppercase;
+}
+
+.trend-tags-item:nth-child(n + 2) {
+    margin-left: 20px;
+}
+
+.trend-tags-link {
+    color: #b59f5b;
+}
+
+.trend-tags-link:hover {
+    text-decoration: underline;
+}
+
+.trend-link {
+    color: #ffffff;
+    font-size: 20px;
+    line-heigh: 1.6;
+    font-family: OpenSans-Bold, sans-serif;
+    text-transform: uppercase;
+}
+
+.trend-link:hover {
+    color: #b59f5b;
+}
+
+/* Основная часть, КОНТЕЕЕЕНТ */
+.content {
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 64px auto;
+}
+
+/* Новостной блок, работать и работать */
+.posts-list {
+    width: 778px;
+}
+
+.post {
+    display: flex;
+    width: 100%;
+}
+
+.post:nth-child(n + 2) {
+    margin-top: 60px;
+}
+
+.post-preview {
+    width: 381px;
+}
+
+.post-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.post-content {
+    margin-left: 30px;
+    max-width: 367px;
+}
+
+.post-tags-list {
+    margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.post-tags-item {
+    font-size: 14px;
+    font-family: OpenSans-Bold, sans-serif;
+    text-transform: uppercase;
+}
+
+.post-tags-item:nth-child(n + 2) {
+    margin-left: 20px;
+}
+
+.post-tags-link {
+    color: #b59f5b;
+}
+
+.post-tags-link:hover {
+    text-decoration: underline;
+}
+
+.card-link {
+    color: #000000;
+    font-size: 20px;
+    line-heigh: 1.6;
+    font-family: OpenSans-Bold, sans-serif;
+    text-transform: uppercase;
+}
+
+.card-link:hover {
+    color: #b59f5b;
+}
+
+.post-info {
+    margin-top: 36px;
+}
+
+.card-date {
+    color: #0f0d0e;
+    font-size: 12px;
+    font-family: OpenSans-Regular, sans-serif;
+}
+
+.card-author {
+    margin-left: 14px;
+    color: #000000;
+    font-size: 12px;
+    font-family: OpenSans-Bold, sans-serif;
+}
+
+.card-content {
+    font-family: OpenSans-Regular, sans-serif;
+    margin-top: 52px;
+    color: #000000;
+    font-size: 15px;
+}
+
+/* Дополнительный блок, работать и работать */
+.side-bar {
+    width: 272px;
+}
+
+/* Дополнительный блок, новые посты */
+.latest-posts {
+    width: 100%;
+    margin-bottom: 60px;
+}
+
+.section-name {
+    text-align: center;
+    color: #0f0d0e;
+    font-size: 14px;
+    font-family: OpenSans-Bold, sans-serif;
+    text-transform: uppercase;
+}
+
+.section-name:after {
+    display: block;
+    margin-top: 14px;
+    margin-bottom: 23px;
+    content: "";
+    margin-left: auto;
+    margin-right: auto;
+    width: 67px;
+    height: 3px;
+    background-color: #e1d9bd;
+}
+
+.latest-post-list {
+    display: flex;
+}
+
+.latest-post-list:nth-child(n + 2) {
+    margin-top: 21px;
+}
+
+.latest-post-preview {
+    width: 100px;
+}
+
+.latest-post-img {
+    height: 100%;
+    width: 100%;
+}
+
+.latest-post-content {
+    width: 172px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 16px;
+}
+
+.latest-post-date {
+    color: #a9a9a9;
+    font-size: 12px;
+    font-family: OpenSans-Regular, sans-serif;
+    margin-bottom: 8px;
+}
+
+.latest-post-link {
+    color: #000000;
+    font-size: 14px;
+    line-height: 1.6;
+    font-family: OpenSans-Bold, sans-serif;
+    text-transform: uppercase;
+}
+
+.latest-post-link:hover {
+    color: #b59f5b;
+}
+
+/* Дополнительный блок, поиск */
+.search {
+    margin-top: 60px;
+    display: flex;
+    width: 272px;
+}
+
+.field {
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding-left: 20px;
+    height: 48px;
+    width: 272px;
+    border: none;
+    display: inline-block;
+    background-color: #f4f7f6;
+}
+
+.field:focus {
+    outline: none;
+    border: 1px solid #b59f5b;
+}
+
+.field-search {
+    width: 224px;
+}
+
+.button {
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+.button-search {
+    outline: none;
+    border: none;
+    margin: 0;
+    height: 48px;
+    width: 48px;
+    background-color: #b59f5b;
+    background-image: url(../svg/search.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 25px;
+}
+
+.button-search:hover {
+    background-color: #323232;
+}
+
+/* Дополнительный блок, обратная связь */
+.subscription {
+    margin-top: 60px;
+}
+
+.button-subscription {
+    outline: none;
+    border: none;
+    margin: 18px 0 0 0;
+    height: 48px;
+    width: 272px;
+    background-color: #b59f5b;
+}
+
+.button-subscription:hover {
+    background-color: #323232;
+}
+
+.subscription-button-text {
+    color: #ffffff;
+    font-size: 14px;
+    font-family: OpenSans-Bold, sans-serif;
+    text-transform: uppercase;
+}
+
+/* Дополнительный блок, теги */
+.tags {
+    margin-top: 60px;
+}
+
+.tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.tags-list-item {
+    margin-right: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    border: 3px solid #eeeeee;
+}
+
+.tags-link {
+    display: block;
+    padding: 7px 13px;
+    color: #0f0d0e;
+    font-size: 12px;
+    font-family: OpenSans-Bold, sans-serif;
+    text-transform: uppercase;
+}
+
+.tags-list-item:hover {
+    border: 3px solid #b59f5b;
+}
+
+/* Дополнительный блок, темы */
+.categories {
+    margin-top: 60px;
+}
+
+.categories-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.categories-list-item {
+    border-bottom: 1px solid #e1d9bd;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.categories-link {
+    color: #000000;
+    font-size: 14px;
+    font-family: OpenSans-Bold, sans-serif;
+}
+
+.categories-link:hover {
+    color: #b59f5b;
+}
+
+.categories-count {
+    margin-left: 5px;
+    color: #b59f5b;
+    font-size: 12px;
+    font-family: OpenSans-Bold, sans-serif;
+    vertical-align: super;
+}
+
+/* Основа, ПРОДУКТЫ */
+.products {
+    max-width: 1200px;
+    margin: 64px auto;
+}
+
+.products-group {
+    margin: 0 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 346px;
+}
+
+.product-preview {
+    height: 209px;
+}
+
+.product-img {
+    height: 100%;
+    width: 100%;
+    max-width: 300px;
+    object-fit: cover;
+
+}
+
+.product-body {
+    margin-top: -30px;
+    width: 100%;
+    border: 3px solid #b59f5b;
+    flex-grow: 1;
+}
+
+.product-content {
+    margin: 50px 23px 0;
+}
+
+.product-title {
+    color: #0f0d0e;
+    font-size: 20px;
+    font-family: OpenSans-Bold, sans-serif;
+    text-transform: uppercase;
+}
+
+.product-description {
+    color: #0f0d0e;
+    font-size: 15px;
+    font-family: OpenSans-Regular, sans-serif;
+    text-transform: none;
+}
+
+.product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 23px;
+}
+
+.product-prices {
+    display: flex;
+    flex-direction: column;
+    color: #0f0d0e;
+    font-size: 20px;
+    font-family: OpenSans-Bold, sans-serif;
+    text-transform: none;
+}
+
+.product-price-old {
+    font-size: 14px;
+    text-decoration: line-through;
+}
+
+.product-rub {
+    font-family: OpenSans-Bold, sans-serif;
+    font-size: inherit;
+}
+
+.button-buy {
+    outline: none;
+    border: none;
+    margin: 18px 0 0 0;
+    height: 48px;
+    width: 140px;
+    background-color: #b59f5b;
+}
+
+.button-buy:hover {
+    background-color: #323232;
+}
+
+.button-buy-text {
+    color: #ffffff;
+    font-size: 14px;
+    font-family: OpenSans-Bold, sans-serif;
+    text-transform: uppercase;
+}
+
+/* Низ, вроде готов */
+.footer {
+    text-align: center;
+    max-width: 1200px;
+    margin: 64px auto 40px;
+
+}
+
+.social {
+    display: flex;
+    justify-content: center;
+    background-color: #f4f7f6;
+    margin: 0 0 74px 0;
+    padding: 30px 0;
+}
+
+.social-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-list-item:nth-child(n + 2) {
+    margin-left: 30px;
+}
+
+.social-icon {
+    display: block;
+    height: 25px;
+    width: 25px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+
+}
+
+.social-icon__pinterest {
+    background-image: url(../svg/001-pinterest.svg);
+}
+
+.social-icon__facebook-logo {
+    background-image: url(../svg/002-facebook-logo.svg);
+}
+
+.social-icon__tumblr {
+    background-image: url(../svg/003-tumblr.svg);
+}
+
+.social-icon__twitter {
+    background-image: url(../svg/004-twitter.svg);
+}
+
+.social-icon__instagram {
+    background-image: url(../svg/005-instagram.svg);
+}
+
+.copyright-text {
+    color: #999999;
+    font-size: 12px;
+    font-family: OpenSans-Bold, sans-serif;
+}
+
+/* Таблетка 641px до 1200px
+Для устройств с шириной экрана, попадающей в диапазон от 641px до 1200px,
+при портретной ориентации экрана карточки трендов должны быть выстроены
+/*в 2 колонки, а при пейзажной ориентации — в 4.*! a1nd (orientation: portrait)*/
+@media (min-width: 641px) and (max-width: 1200px) {
+/* Тренды.*/
+.header {
+        background-image: url("../images/banner-bg-tablet.jpg");
+    }
+
+.header-logo {
+    width: 160px;
+}
+
+.welcome-title {
+    font-size: 40px;
+}
+
+.menu-button {
+   display: unset;
+}
+
+.menu-list {
+    display: none;
+}
+
+.trend {
+    width: calc(50% - 2px);
+}
+
+.trend:nth-child(n - 3) {
+    margin-top: 4px;
+}
+
+.partition-name {
+    font-size: 18px;
+}
+
+.trend-link {
+    font-size: 17px;
+}
+
+/* Контент.*/
+
+.posts-list {
+    max-width: 778px;
+}
+
+.post {
+    flex-direction: column;
+}
+
+.post-preview {
+    max-width: 367px;
+    margin-left: 15px;
+}
+
+.post-content {
+    margin-left: 15px;
+    margin-top: 16px;
+}
+
+.card-link {
+    font-size: 17px;
+}
+/* бар.*/
+.side-bar {
+    margin-right: 15px;
+    margin-left: 30px;
+}
+
+/* Продукты.*/
+
+.products-group {
+  margin: 0 30px;
+}
+
+.product {
+    width: calc(50vw - 60px);
+    min-width: 260px;
+}
+
+.product-preview {
+    height: 232px;
+}
+
+.product-body {
+    max-width: 400px;
+}
+
+
+.product:nth-child(3) {
+    margin-top: 30px;
+}
+
+.product-body {
+    min-width: 300px;
+}
+}
+
+/* Мобилка меньше 640px
+Для устройств с шириной экрана от 640px и меньше при портретной ориентации
+экрана должна быть 1 колонка с карточками, а при пейзажной — 2.*/
+/*and (orientation: portrait)*/
+@media (max-width: 640px) {
+/* Шапка*/
+.header {
+    background-image: url("../images/banner-mobile.jpg");
+}
+
+.header-group {
+    flex-direction: column-reverse;
+    align-items: center;
+}
+
+.header-logo {
+    margin-top: 180px;
+    width: 270px;
+}
+
+.container {
+    position: relative;
+}
+
+.menu {
+    position: absolute;
+    top: 0px;
+    right: 15px;
+}
+
+.menu-button {
+
+    display: unset;
+}
+
+.menu-list {
+    display: none;
+
+}
+
+.welcome-title {
+    font-size: 26px;
+    margin-top: 40px;
+    margin-bottom: 217px;
+}
+
+/* Основная часть*/
+.partition-name {
+    font-size: 16px;
+}
+
+.trends-group {
+    flex-direction: column;
+}
+
+.trends {
+    margin-top: 44px;
+}
+
+.trend {
+    width: 100%;
+}
+
+.trend:nth-child(n+2) {
+    margin-top: 3px;
+}
+
+.trend-link {
+    font-size: 16px;
+}
+
+/* Продукты*/
+
+.products {
+    margin: 44px auto;
+}
+
+.products-group {
+    flex-direction: column;
+}
+
+.product {
+    width: 100%;
+}
+
+.post-preview {
+    height: 294px;
+}
+
+.product:nth-child(n+2) {
+    margin-top: 25px;
+}
+
+.product-title {
+    font-size: 17px;
+}
+
+/* Контент*/
+
+.content {
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 640px;
+    margin: 44px auto;
+}
+
+.card-link {
+    font-size: 16px;
+}
+
+.card-content {
+    font-size: 14px;
+}
+
+/* сайд бар*/
+
+.side-bar {
+    margin-top: 44px;
+    width: 100%;
+}
+
+.section-name {
+    font-size: 16px;
+}
+
+.posts-list {
+    width: 100%;
+}
+
+.post {
+    width: 100%;
+    flex-direction: column;
+}
+
+.post:nth-child(n+2) {
+    margin-top: 60px;
+}
+
+.post-preview {
+    max-width: 640px;
+    width: 100%;
+}
+
+.post-content {
+    margin: 17px 0 0;
+    max-width: 640px;
+}
+
+.post-info {
+    margin-top: 24px;
+}
+
+.card-content {
+    margin-top: 24px;
+}
+
+.search {
+    max-width: 640px;
+    width: 100%;
+}
+
+.search-group {
+    max-width: 640px;
+    width: 100%;
+}
+
+.field-search {
+    width: 100%;
+}
+
+.subscription-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.field-subscription {
+    width: 100%;
+}
+
+.button-subscription {
+    width: 100%;
+}
+
+.tags-list {
+    justify-content: space-between;
+}
+
+.tags-list-item {
+    border: none;
+}
+
+.tags-list-item:hover {
+    border: none;
+}
+
+.categories-list-item {
+    border: none;
+}
+
+/* ноги*/
+.footer {
+    margin-top: 44px;
+}
+}
+
+@media (max-width: 640px) end (orientation: landscape) {
+.trend {
+    width: calc(50% - 90px);
+}
+}
+
+html {
+    font-size: 16px;
+}
+.probarem {
+    font-size: 0.5rem;
+}
+    /*and (orientation: landscape)*/
