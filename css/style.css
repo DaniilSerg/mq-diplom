@@ -341,7 +341,7 @@ ul {
     margin: 117px 0;
     color: #ffffff;
     font-size: 45px;
-    line-heigh: 1.6;
+    line-height: 1.6;
     font-family: OpenSans-Bold, sans-serif;
     text-transform: uppercase;
 }
@@ -454,7 +454,7 @@ ul {
 .trend-link {
     color: #ffffff;
     font-size: 20px;
-    line-heigh: 1.6;
+    line-height: 1.6;
     font-family: OpenSans-Bold, sans-serif;
     text-transform: uppercase;
 }
@@ -529,7 +529,7 @@ ul {
 .card-link {
     color: #000000;
     font-size: 20px;
-    line-heigh: 1.6;
+    line-height: 1.6;
     font-family: OpenSans-Bold, sans-serif;
     text-transform: uppercase;
 }
@@ -1250,11 +1250,5 @@ ul {
 /* ноги*/
 .footer {
     margin-top: 44px;
-}
-}
-
-@media (max-width: 640px) end (orientation: landscape) {
-.trend {
-    width: calc(50% - 90px);
 }
 }
