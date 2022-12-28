@@ -335,6 +335,10 @@ ul {
     color: #ffffff;
 }
 
+.menu-link:hover {
+    border-bottom: 1px solid #ffffff;
+}
+
 .welcome-title {
     text-align: center;
     overflow: hidden;
